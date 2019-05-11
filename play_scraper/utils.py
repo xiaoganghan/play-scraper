@@ -279,11 +279,15 @@ def parse_app_details(soup):
     except AttributeError:
         score = None
 
-    histogram = {}
     try:
         reviews = int(soup.select_one('span[aria-label$="ratings"]')
                           .text
                           .replace(',', ''))
+    except:
+        reviews = None
+
+    histogram = {}
+    try:
         ratings_section = soup.select_one('div.VEF2C')
         num_ratings = [int(rating.attrs['title'].replace(',', ''))
                        for rating in ratings_section.select(
@@ -291,7 +295,7 @@ def parse_app_details(soup):
         for i in range(5):
             histogram[5 - i] = num_ratings[i]
     except:
-        reviews = None
+        pass
 
     try:
 
