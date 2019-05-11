@@ -290,8 +290,8 @@ def parse_app_details(soup):
                            'div span[style^="width:"]')]
         for i in range(5):
             histogram[5 - i] = num_ratings[i]
-    except AttributeError:
-        reviews = 0
+    except:
+        reviews = None
 
     try:
 
