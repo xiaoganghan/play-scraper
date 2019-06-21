@@ -353,6 +353,7 @@ def parse_app_details(soup):
         'free': free,
         'iap': offers_iap,
         'developer_id': developer_id,
+        'similar_apps': similar_apps
     }
 
     data.update(additional_info_data)
