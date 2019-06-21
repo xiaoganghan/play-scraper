@@ -327,6 +327,15 @@ def parse_app_details(soup):
         dev_id = None
     developer_id = dev_id if dev_id else None
 
+    similar_apps = []
+    for item in soup.findAll('a', {'class': 'poRVub'}):
+        try:
+            similar_app_link = item['href']
+            similar_app_id = similar_app_link.split('?id=')[-1].split('/')[0].split('?')[0]
+            similar_apps.append({'app_id': similar_app_id})
+        except:
+            pass
+        
     data = {
         'title': title,
         'icon': icon,
